@@ -319,7 +319,3 @@ workflows:
           profile_name: default
           requires:
             - "Publish Manifest to ECR"          
-          service_name: ambassador-arm
-          profile_name: default
-          requires:
-            - "Publish Manifest to ECR"
