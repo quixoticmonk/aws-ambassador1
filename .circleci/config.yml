@@ -281,17 +281,18 @@ workflows:
           requires:
             - "Building amd64 Container Image"
       - publish-image:
-          name: "Publish amd64 Container Image to ECR"
+          name: "Publish << matrix.architecture >> Container Image to ECR"
           matrix:
             parameters:
-              architecture: [ "amd64"]
+              architecture: ["arm64", "amd64"]
           requires:
-            - "Testing amd64 Container Image"
+            - "Testing << matrix.architecture >> Container Image"
             - "Testing Python Code"
-            - "Scan amd64 Container Image"
+            - "Scan << matrix.architecture >> Container Image"
       - publish-manifest:
           name: "Publish Manifest to ECR"
           requires:
+            - "Publish arm64 Container Image to ECR"
             - "Publish amd64 Container Image to ECR"
       - aws-ecs/deploy_service_update:
           auth:
