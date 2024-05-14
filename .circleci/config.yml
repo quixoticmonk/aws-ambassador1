@@ -282,7 +282,7 @@ workflows:
           name: "Publish << matrix.architecture >> Container Image to ECR"
           matrix:
             parameters:
-              architecture: ["arm64", "amd64"]
+              architecture: [ "amd64"]
           requires:
             - "Testing << matrix.architecture >> Container Image"
             - "Testing Python Code"
