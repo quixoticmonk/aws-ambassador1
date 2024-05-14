@@ -290,7 +290,6 @@ workflows:
       - publish-manifest:
           name: "Publish Manifest to ECR"
           requires:
-            - "Publish arm64 Container Image to ECR"
             - "Publish amd64 Container Image to ECR"
       - aws-ecs/deploy_service_update:
           auth:
