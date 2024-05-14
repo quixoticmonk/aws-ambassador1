@@ -277,16 +277,16 @@ workflows:
               - architecture: "amd64"
                 os-type: "linux-arm64"
           requires:
-            - "Building << matrix.architecture >> Container Image"
+            - "Building amd64 Container Image"
       - publish-image:
-          name: "Publish << matrix.architecture >> Container Image to ECR"
+          name: "Publish amd64 Container Image to ECR"
           matrix:
             parameters:
               architecture: [ "amd64"]
           requires:
-            - "Testing << matrix.architecture >> Container Image"
+            - "Testing amd64 Container Image"
             - "Testing Python Code"
-            - "Scan << matrix.architecture >> Container Image"
+            - "Scan amd64 Container Image"
       - publish-manifest:
           name: "Publish Manifest to ECR"
           requires:
